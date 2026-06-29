@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="playerBean" class="com.cognizant.spring.Player">
+        <property name="name" value="Virat Kohli" />
+        <property name="position" value="Batsman" />
+    </bean>
+
+    <bean id="teamBean" class="com.cognizant.spring.Team">
+        <property name="teamName" value="Royal Challengers Bangalore" />
+        <property name="captain" ref="playerBean" />
+    </bean>
+
+</beans>
