@@ -7,4 +7,4 @@ target/
 # Ignore root configs
 .vscode/
 tracking_sheet.md
-pom.xml
+/pom.xml
