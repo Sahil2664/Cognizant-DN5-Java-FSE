@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cognizant</groupId>
+    <artifactId>cognizant-practiceques-root</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <!-- Adding all nested exercises as modules so the IDE recognizes them properly -->
+    <modules>
+        <module>Module-3/JUnit-and-Mockito/Exercise1-Setup</module>
+        <module>Module-3/JUnit-and-Mockito/Exercise3-Assertions</module>
+        <module>Module-3/JUnit-and-Mockito/Exercise4-AAA-Pattern</module>
+        <module>Module-3/JUnit-and-Mockito/Exercise5-MockingAndStubbing</module>
+        <module>Module-3/JUnit-and-Mockito/Exercise6-VerifyingInteractions</module>
+        <module>Module-4/SLF4J-Logging/Exercise1-LoggingErrorWarning</module>
+        <module>Module-5/Spring-Core-and-Maven/Exercise1-BasicSpringApp</module>
+        <module>Module-5/Spring-Core-and-Maven/Exercise2-DependencyInjection</module>
+        <module>Module-5/Spring-Core-and-Maven/Exercise4-CreatingAndConfiguringMavenProject</module>
+        <module>Module-6/Spring-Data-JPA/Exercise1-QuickExample</module>
+        <module>Module-7/Spring-REST/Exercise1-CreateSpringWebProject</module>
+        <module>Module-7/Spring-REST/Exercise2-LoadCountryFromXML</module>
+    </modules>
+
+</project>

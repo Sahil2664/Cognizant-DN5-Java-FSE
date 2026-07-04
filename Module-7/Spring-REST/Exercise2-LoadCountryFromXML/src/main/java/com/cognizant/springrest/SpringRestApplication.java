@@ -21,6 +21,7 @@ public class SpringRestApplication {
         ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
         Country country = (Country) context.getBean("in");
         LOGGER.debug("Country : {}", country.toString());
+        ((ClassPathXmlApplicationContext) context).close();
         LOGGER.info("END");
     }
 }
