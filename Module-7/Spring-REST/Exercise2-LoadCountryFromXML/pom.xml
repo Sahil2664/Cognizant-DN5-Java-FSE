@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.cognizant</groupId>
-    <artifactId>Exercise1-CreateSpringWebProject</artifactId>
+    <artifactId>Exercise2-LoadCountryFromXML</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Exercise1-CreateSpringWebProject</name>
-    <description>Spring Web Project using Maven</description>
+    <name>Exercise2-LoadCountryFromXML</name>
+    <description>Spring Core - Load Country from Spring Configuration XML</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
