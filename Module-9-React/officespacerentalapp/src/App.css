@@ -45,6 +45,7 @@ body {
   margin-bottom: 1rem;
   background: linear-gradient(to right, #818cf8, #34d399);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -1px;
 }
@@ -116,8 +117,8 @@ body {
 /* Office Card (Glassmorphism) */
 .office-card {
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 1.5rem;
