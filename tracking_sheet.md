@@ -35,7 +35,7 @@ Here is the exact mapping of mandatory exercises from your `DN - Java FSE Mandat
 | **React** | 5. ReactJS-HOL | Hands-on in this document | ✅ Done |
 | **React** | 9. ReactJS-HOL | Hands-on in this document | ✅ Done |
 | **React** | 10. ReactJS-HOL | Hands-on in this document | ✅ Done |
-| **React** | 11. ReactJS-HOL | Hands-on in this document | ⏳ Pending |
+| **React** | 11. ReactJS-HOL | Hands-on in this document | ✅ Done |
 | **React** | 12. ReactJS-HOL | Hands-on in this document | ⏳ Pending |
 | **React** | 13. ReactJS-HOL | Hands-on in this document | ⏳ Pending |
 | **GIT** | 1. Git-HOL | Hands-on in this document | ⏳ Pending |
