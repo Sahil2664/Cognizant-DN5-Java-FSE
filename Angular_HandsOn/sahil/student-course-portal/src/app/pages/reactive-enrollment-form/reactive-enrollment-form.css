@@ -1,0 +1,8 @@
+/* Re-use base styles from template driven form */
+@import '../enrollment-form/enrollment-form.css';
+
+.info-msg {
+  color: #3b82f6;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
