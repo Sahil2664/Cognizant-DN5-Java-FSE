@@ -17,10 +17,16 @@ export class CourseList implements OnInit {
   constructor(private courseService: Course) {}
 
   ngOnInit() {
-    setTimeout(() => {
-      this.courses = this.courseService.getCourses();
-      this.isLoading = false;
-    }, 1500);
+    this.courseService.getCourses().subscribe({
+      next: (data) => {
+        this.courses = data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error fetching courses:', err);
+        this.isLoading = false;
+      }
+    });
   }
 
   onEnroll(courseId: number) {

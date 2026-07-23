@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface CourseData {
   id: number;
@@ -12,19 +14,15 @@ export interface CourseData {
   providedIn: 'root',
 })
 export class Course {
-  private courses: CourseData[] = [
-    { id: 1, name: 'Angular Core Concepts', code: 'ANG101', credits: 4, gradeStatus: 'passed' },
-    { id: 2, name: 'RxJS Masterclass', code: 'RX201', credits: 3, gradeStatus: 'pending' },
-    { id: 3, name: 'NgRx State Management', code: 'NGRX301', credits: 5, gradeStatus: 'passed' },
-    { id: 4, name: 'Advanced CSS for Angular', code: 'CSS202', credits: 2, gradeStatus: 'failed' },
-    { id: 5, name: 'Unit Testing with Jasmine', code: 'TST400', credits: 3, gradeStatus: 'pending' }
-  ];
+  private apiUrl = 'http://localhost:3000/courses';
 
-  getCourses(): CourseData[] {
-    return this.courses;
+  constructor(private http: HttpClient) {}
+
+  getCourses(): Observable<CourseData[]> {
+    return this.http.get<CourseData[]>(this.apiUrl);
   }
 
-  getCourseById(id: number): CourseData | undefined {
-    return this.courses.find(c => c.id === id);
+  getCourseById(id: number): Observable<CourseData> {
+    return this.http.get<CourseData>(`${this.apiUrl}/${id}`);
   }
 }
