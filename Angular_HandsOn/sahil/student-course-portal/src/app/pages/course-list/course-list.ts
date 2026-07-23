@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseCard } from '../../components/course-card/course-card';
-import { Course, CourseData } from '../../services/course';
+import { CourseData } from '../../services/course';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { loadCourses } from '../../store/course.actions';
+import { selectAllCourses, selectCoursesLoading, selectCoursesError } from '../../store/course.selectors';
 
 @Component({
   selector: 'app-course-list',
@@ -10,23 +14,19 @@ import { Course, CourseData } from '../../services/course';
   styleUrl: './course-list.css',
 })
 export class CourseList implements OnInit {
-  isLoading = true;
-  courses: CourseData[] = [];
+  courses$: Observable<CourseData[]>;
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
   selectedCourseId: number | null = null;
 
-  constructor(private courseService: Course) {}
+  constructor(private store: Store) {
+    this.courses$ = this.store.select(selectAllCourses);
+    this.isLoading$ = this.store.select(selectCoursesLoading);
+    this.error$ = this.store.select(selectCoursesError);
+  }
 
   ngOnInit() {
-    this.courseService.getCourses().subscribe({
-      next: (data) => {
-        this.courses = data;
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching courses:', err);
-        this.isLoading = false;
-      }
-    });
+    this.store.dispatch(loadCourses());
   }
 
   onEnroll(courseId: number) {
@@ -35,6 +35,6 @@ export class CourseList implements OnInit {
   }
 
   trackByCourseId(index: number, course: any) {
-    return course.id; // trackBy improves performance by only re-rendering changed items
+    return course.id;
   }
 }

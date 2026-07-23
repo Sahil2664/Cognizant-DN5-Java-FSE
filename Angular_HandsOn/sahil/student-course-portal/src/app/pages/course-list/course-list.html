@@ -1,15 +1,18 @@
 <div class="list-container">
   <h2>Available Courses</h2>
   
-  <p *ngIf="isLoading; else courseGrid">Loading courses...</p>
+  <p *ngIf="isLoading$ | async; else courseGrid">Loading courses...</p>
   
   <ng-template #courseGrid>
-    <div class="grid-container" style="margin-top: 1rem;" *ngIf="courses.length > 0; else noCourses">
-      <app-course-card 
-        *ngFor="let c of courses; trackBy: trackByCourseId" 
-        [course]="c" 
-        (enrollRequested)="onEnroll($event)">
-      </app-course-card>
+    <p class="error-msg" *ngIf="error$ | async as error">Error: {{ error }}</p>
+    <div class="grid-container" style="margin-top: 1rem;" *ngIf="(courses$ | async) as courses">
+      <div *ngIf="courses.length > 0; else noCourses" style="display: contents;">
+        <app-course-card 
+          *ngFor="let c of courses; trackBy: trackByCourseId" 
+          [course]="c" 
+          (enrollRequested)="onEnroll($event)">
+        </app-course-card>
+      </div>
     </div>
   </ng-template>
 
