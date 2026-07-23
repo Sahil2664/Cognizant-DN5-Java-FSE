@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { Enrollment } from '../../services/enrollment';
 
 export function noCourseCode(control: AbstractControl): ValidationErrors | null {
   const value = control.value as string;
@@ -32,7 +33,7 @@ export function simulateEmailCheck(control: AbstractControl): Promise<Validation
 export class ReactiveEnrollmentForm implements OnInit {
   enrollForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private enrollmentService: Enrollment) {}
 
   ngOnInit() {
     this.enrollForm = this.fb.group({
@@ -58,8 +59,11 @@ export class ReactiveEnrollmentForm implements OnInit {
   }
 
   onSubmit() {
-    console.log('Form Value:', this.enrollForm.value);
-    console.log('Raw Value:', this.enrollForm.getRawValue());
-    // Form value excludes disabled controls, rawValue includes everything
+    if (this.enrollForm.valid) {
+      const formValue = this.enrollForm.getRawValue();
+      const courseId = formValue.courseId;
+      this.enrollmentService.enroll(courseId, formValue);
+      console.log('Enrollment successful!');
+    }
   }
 }
