@@ -1,0 +1,93 @@
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+input, select {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.5);
+  color: white;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+}
+
+.ng-invalid.ng-touched {
+  border-color: #ef4444 !important;
+}
+
+.ng-valid.ng-touched {
+  border-color: #10b981 !important;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:disabled {
+  background: var(--border);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--border);
+  color: white;
+}
+
+.success-msg {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border-radius: 8px;
+  text-align: center;
+}
