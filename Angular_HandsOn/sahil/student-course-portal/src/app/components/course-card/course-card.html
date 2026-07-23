@@ -1,5 +1,25 @@
-<div class="item-card">
-  <h3 class="item-title">{{ course.name }} <small>({{ course.code }})</small></h3>
-  <p class="item-meta">Credits: {{ course.credits }}</p>
-  <button class="btn btn-toggle" style="margin-top: 1rem;" (click)="enrollRequested.emit(course.id)">Enroll</button>
+<div class="item-card" 
+     [ngClass]="cardClasses" 
+     [ngStyle]="{'border-left': '4px solid ' + (course.gradeStatus === 'passed' ? 'green' : course.gradeStatus === 'failed' ? 'red' : 'grey')}"
+     appHighlight="rgba(255, 255, 255, 0.1)">
+  
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <h3 class="item-title">{{ course.name }} <small>({{ course.code }})</small></h3>
+    <span [ngSwitch]="course.gradeStatus" class="badge">
+      <span *ngSwitchCase="'passed'" style="color: green;">Passed</span>
+      <span *ngSwitchCase="'failed'" style="color: red;">Failed</span>
+      <span *ngSwitchDefault style="color: grey;">Pending</span>
+    </span>
+  </div>
+
+  <p class="item-meta">Credits: {{ course.credits | creditLabel }}</p>
+  
+  <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+    <button class="btn btn-toggle" (click)="enrollRequested.emit(course.id); isEnrolled = true">Enroll</button>
+    <button class="btn" style="background: var(--border); color: white;" (click)="isExpanded = !isExpanded">Show Details</button>
+  </div>
+  
+  <div *ngIf="isExpanded" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-muted);">
+    Expanded details for {{ course.name }} would go here.
+  </div>
 </div>
