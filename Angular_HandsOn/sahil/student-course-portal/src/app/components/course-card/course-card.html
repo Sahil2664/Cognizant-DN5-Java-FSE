@@ -1,0 +1,5 @@
+<div class="item-card">
+  <h3 class="item-title">{{ course.name }} <small>({{ course.code }})</small></h3>
+  <p class="item-meta">Credits: {{ course.credits }}</p>
+  <button class="btn btn-toggle" style="margin-top: 1rem;" (click)="enrollRequested.emit(course.id)">Enroll</button>
+</div>

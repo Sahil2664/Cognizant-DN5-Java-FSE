@@ -1,11 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit, OnDestroy {
+  portalName = 'Student Course Portal';
+  isPortalActive = true;
+  message = '';
+  searchTerm = '';
 
+  // [property] is one-way binding (component -> DOM)
+  // [(ngModel)] is two-way binding (component <-> DOM), requires FormsModule
+  
+  onEnrollClick() {
+    this.message = 'Enrollment opened!';
+  }
+
+  ngOnInit() {
+    console.log('HomeComponent initialised — courses loaded');
+  }
+
+  ngOnDestroy() {
+    console.log('HomeComponent destroyed');
+  }
 }
